@@ -1,6 +1,6 @@
 class TodolistsController < ApplicationController
   def new
-    @list = List.new
+    @list = List.new# Viewへ渡すためのインスタンス変数に空のモデルオブジェクトを生成する。
   end
   
   def create
@@ -35,12 +35,10 @@ class TodolistsController < ApplicationController
     list.destroy  # データ（レコード）を削除
     redirect_to todolists_path  # 投稿一覧画面へリダイレクト
   end
-
+  
   private
   # ストロングパラメータ
   def list_params
     params.require(:list).permit(:title, :body,:image)
-  end
-  
-  
-  end
+  end 
+end
